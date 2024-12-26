@@ -1,0 +1,5 @@
+@mixin headerIndent() {
+    @media screen and (width <= 992px) {
+        margin-top: 30px;
+    }
+}
