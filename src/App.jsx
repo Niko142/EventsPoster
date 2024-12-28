@@ -2,14 +2,14 @@ import { useState } from 'react'
 
 import './index.scss'
 import Header from './client/Header'
-import StartVidget from './client/Vidget'
+import StartWidget from './client/Widget'
 
 function App() {
 
   return (
     <>
       <Header />
-      <StartVidget />
+      <StartWidget />
     </>
   )
 }

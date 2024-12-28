@@ -4,14 +4,14 @@ import '../../node_modules/bootstrap/js/src/collapse'
 const Header = () => {
     return (
     <nav className="navbar navbar-expand-lg">
-      <div className="container-fluid px-5">
+      <div className="container-fluid px-sm-5 px-2">
         <a className="navbar-brand" href="#">
             <img src={logo} alt="..." onClick={() => window.location.reload()}/>
         </a>
         <div className="navbar-title">
-          <h2>Афиша Самары</h2>
+          <h1>Афиша Самары</h1>
         </div>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button className="navbar-toggler ms-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
