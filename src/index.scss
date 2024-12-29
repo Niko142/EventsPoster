@@ -42,7 +42,7 @@ body {
     font-weight: 400;
 }
 
-//header
+//HEADER
 .navbar {
     background-color: f.$grey;
     position: sticky;
@@ -90,10 +90,13 @@ body {
     }
 }
 
-// Vidget
+// WIDGET
 .card {
-    margin-inline: 100px;
-    margin-top: 5rem;
+    margin: {
+        inline: 100px;
+        top: 3rem;
+    };
+    max-height: 65vh;
     flex-direction: row;
     color: f.$red;
     background-color: f.$grey;
@@ -155,12 +158,14 @@ body {
     & .btn {
         color: f.$sky;
         background-color: f.$red;
+        margin-bottom: 10px;
         &:where(:hover, :focus-visible, :active) {
             opacity: .8;
             color: f.$black;
         }
     }
     & .btn:where(.next, .prev) {
+        display: flex;
         background-color: f.$sky;
         color: f.$grey;
     }
@@ -174,5 +179,68 @@ body {
             opacity: 1;
             transform: translateX(0);
         }
+    }
+}
+
+// FOOTER
+.footer {
+    // фиксануть absolute
+    color: f.$sky;
+    display: flex;
+    justify-content: space-between;
+    row-gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+    position: absolute; bottom: 0;
+    background-color: f.$grey;
+    padding: {
+        inline: 120px;
+        top: 20px;
+        bottom: 20px;
+    };
+    @include f.footerOffset(670px, 60px);
+    @include f.footerOffset(395px,45px);
+    @include f.footerOffset(331px, 35px);
+    &-header{
+        font-weight: 700;
+    }
+
+    & ul {
+        display: flex;
+        flex-direction: column;
+        row-gap: 5px;
+        padding-left: 0;
+        margin-bottom: 0;
+    }
+
+    &-link {
+        text-decoration: none;
+        color: f.$sky;
+        &:hover {
+            color: f.$red;
+        }
+    }
+
+    & :where(
+        .footer-logo, 
+        .footer-navigation, 
+        .footer-contacts, 
+        .footer-networks
+        ) {
+        display: flex;
+        flex-direction: column;
+        padding-inline: 1rem;
+    }
+
+    & :where(span, a) {opacity: .8;}
+
+    &-contacts{
+        display: flex;
+        flex-direction: column;
+        row-gap: 5px;
+    }
+    &-section {
+        display: flex;
+        column-gap: 10px;
     }
 }

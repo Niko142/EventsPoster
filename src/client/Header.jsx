@@ -22,6 +22,12 @@ const Header = () => {
             <li className="nav-item">
               <a className="nav-link" href="#">События</a>
             </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">Информация</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">Контакты</a>
+            </li>
           </ul>
         </div>
       </div>

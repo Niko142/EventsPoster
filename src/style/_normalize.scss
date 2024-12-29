@@ -62,7 +62,13 @@
    display: block;
    max-width: 100%;
  }
- 
+
+ ul, li {list-style-type: none;}
+
+ a, u {text-decoration: none;}
+
+ svg {pointer-events: none;}
+
  /**
    Наследуем свойства шрифт для полей ввода
   */

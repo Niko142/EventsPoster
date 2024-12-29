@@ -7,3 +7,9 @@
         margin-top: 15px;
     }
 }
+
+@mixin footerOffset($req, $res) {
+    @media screen and (max-width: $req) {
+        padding-inline: $res;
+    }
+}
