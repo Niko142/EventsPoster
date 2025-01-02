@@ -40,6 +40,9 @@ body {
     font-family: 'Ubuntu';
     background-color: f.$black;
     font-weight: 400;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 //HEADER
@@ -48,6 +51,7 @@ body {
     position: sticky;
     top: 0;
     box-shadow: 0 0 0.1rem white;
+    z-index: 1000;
     &-nav {
         gap: 20px;  
     }
@@ -93,15 +97,29 @@ body {
 // WIDGET
 .card {
     margin: {
-        inline: 100px;
+        inline: auto;
         top: 3rem;
     };
+    max-width: 1920px;
+    display: flex;
     max-height: 65vh;
     flex-direction: row;
     color: f.$red;
     background-color: f.$grey;
     animation: widgetAppearance 1s ease-in-out forwards;
-
+    @include f.widget(1920px) {
+        margin-inline: 100px;
+    }
+    @include f.widget(1250px) {
+        flex-direction: column;
+        & .btn {
+            align-self: flex-start;
+            &-continue {
+                padding-inline: 5rem;
+            }
+        }
+    }
+    
     @keyframes opacitySlider {
         from {
             opacity: 1;
@@ -112,10 +130,12 @@ body {
     }
 
     &-carousel {
-        // width: 50%;
-        border-radius: 0.375rem;
+        display: flex;
+        justify-content: center;
+        flex: 7;
         overflow: hidden;
         &-image {
+            flex: 0 0 100%;
             &.visible {
                 transition: opacity .3s ease-in-out;
                 opacity: 1;
@@ -132,6 +152,7 @@ body {
 
     &-body {
         display: flex;
+        flex: 3;
         flex-direction: column;
         padding-inline: 2rem;
     }
@@ -153,6 +174,11 @@ body {
         vertical-align: bottom;
         align-items: end;
         margin-top: auto;
+        @include f.widget(1250px) {
+            justify-content: end;
+            column-gap: 5rem;
+            margin-inline: 0;
+        }
     }
 
     & .btn {
@@ -168,6 +194,7 @@ body {
         display: flex;
         background-color: f.$sky;
         color: f.$grey;
+        & svg {pointer-events: none;}
     }
     
     @keyframes widgetAppearance {
@@ -184,14 +211,13 @@ body {
 
 // FOOTER
 .footer {
-    // фиксануть absolute
+    margin-top: auto; //фиксированный отступ, чтобы прижать к низу
     color: f.$sky;
     display: flex;
     justify-content: space-between;
     row-gap: 20px;
     flex-wrap: wrap;
     width: 100%;
-    position: absolute; bottom: 0;
     background-color: f.$grey;
     padding: {
         inline: 120px;
@@ -242,5 +268,18 @@ body {
     &-section {
         display: flex;
         column-gap: 10px;
+
+        & :where(.footer-vk, .footer-telegram, .footer-github) {
+            filter: grayscale(1);
+            cursor: pointer;
+        }
+        
+        & :where(.footer-vk, .footer-telegram, .footer-github):hover {
+            filter: grayscale(0);
+        }
+
+        & .footer-vk:hover {fill: f.$vk;}
+        & .footer-telegram:hover {fill: f.$telegram;}
+        & .footer-github:hover {fill: f.$github;}
     }
 }

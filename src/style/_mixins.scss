@@ -13,3 +13,9 @@
         padding-inline: $res;
     }
 }
+
+@mixin widget($req) {
+    @media screen and (max-width: $req) {
+        @content;
+    }
+}

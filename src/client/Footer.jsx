@@ -22,9 +22,9 @@ const Footer = () => {
             <div className="footer-networks">
                 <h4 className='footer-header'>Социальные сети</h4>
                 <section className="footer-section">
-                    <FaVk size={25}/>
-                    <FaTelegram size={25}/>
-                    <FaGithub size={25}/>
+                    <a href="https://vk.com/id158593834"><FaVk className="footer-section footer-vk" size={25} /></a>
+                    <a href="https://t.me/Skr1ll2"><FaTelegram className="footer-section footer-telegram" size={25}/></a>
+                    <a href="https://github.com/Niko142"><FaGithub className="footer-section footer-github" size={25}/></a>
                 </section>
             </div>
         </footer>
