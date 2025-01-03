@@ -98,7 +98,8 @@ body {
 .card {
     margin: {
         inline: auto;
-        top: 3rem;
+        top: 2rem;
+        bottom: 2.6rem;
     };
     max-width: 1920px;
     display: flex;
@@ -118,6 +119,10 @@ body {
                 padding-inline: 5rem;
             }
         }
+    }
+    @include f.widget(640px) {margin-inline: 45px;}
+    @include f.widget(463px){
+        margin-inline: 20px;
     }
     
     @keyframes opacitySlider {
@@ -155,6 +160,9 @@ body {
         flex: 3;
         flex-direction: column;
         padding-inline: 2rem;
+        @include f.widget(463px){
+            padding-inline: 1rem;
+        }
     }
 
     &-title {
@@ -165,6 +173,7 @@ body {
             size: 1.1rem
         };
         color: f.$sky;
+        @include f.widget(530px) {font-size: 0.9rem;}
     }
 
     &-btn-bar {
@@ -179,15 +188,24 @@ body {
             column-gap: 5rem;
             margin-inline: 0;
         }
+        @include f.widget(590px) {justify-content: space-around;}
     }
 
     & .btn {
         color: f.$sky;
         background-color: f.$red;
         margin-bottom: 10px;
+        
         &:where(:hover, :focus-visible, :active) {
             opacity: .8;
             color: f.$black;
+        }
+        @include f.widget(590px) {
+            &.btn-continue {
+                padding-inline: 1rem;
+                align-self: auto;
+                margin-bottom: 20px;
+            }
         }
     }
     & .btn:where(.next, .prev) {

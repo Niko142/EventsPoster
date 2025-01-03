@@ -6,15 +6,12 @@ const StartWidget = () => {
     const [image, setImage] = useState([]);
     const [currentIndex, setIndex] = useState(0);
     const wrapper = useRef(null);
-    const card = useRef(null);
+
 
     useEffect(()=> {
-        const width = document.documentElement.clientWidth;
-        const height = document.documentElement.clientHeight;
         setImage(slideImage);
         checkVisible();
         translateSlide(currentIndex);
-        normalizeCard(width, height);
 
         const interval = setInterval(()=> {
             nextSlide();
@@ -63,17 +60,9 @@ const StartWidget = () => {
     function translateSlide(scale) {
         wrapper.current ? wrapper.current.style.transform = `translateX(-${scale * 100}%)`: null;
     }
-
-    function normalizeCard(width, height) {
-        if (height <= 1060 && width <= 869) {
-            card.current.style.marginBottom = `4rem`;
-        }
-    }
-    
-    normalizeCard()
     
     return (
-        <div className="card" ref={card}>
+        <div className="card">
             <div className="card-carousel">
                 <div className="card-carousel-wrapper" ref={wrapper}>
                     {image.map((item, ind) => {
@@ -87,7 +76,7 @@ const StartWidget = () => {
                 <p className="card-text">Добро пожаловать на сайт по демонстрации надвигающихся мероприятий в городе Самара! Организуйте дальнейший план по посещению выставок, концертов, театров, чтобы в вашей жизни появилась активность.</p>
                 <button className="btn btn-continue">Продолжить</button>
                 <div className="card-btn-bar">
-                    <button className='btn prev' style={{order: 0}} data-type = 'prev' onClick={(e) => motionSlide(e)}><FaArrowLeft /></button>
+                    <button className='btn prev' data-type = 'prev' onClick={(e) => motionSlide(e)}><FaArrowLeft /></button>
                     <button className='btn next' data-type = 'next' onClick={(e) => motionSlide(e)}><FaArrowRight /></button>
                 </div>
             </div>

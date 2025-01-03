@@ -13,10 +13,10 @@ const Footer = () => {
             <div className="footer-navigation">
                 <h4 className='footer-header'>Навигация</h4>
                 <ul>
-                    <li className="footer-item"><a href="/#" className="footer-link">Главная</a></li>
+                    <li className="footer-item"><a href="/" className="footer-link">Главная</a></li>
                     <li className="footer-item"><a href="/#" className="footer-link">События</a></li>
                     <li className="footer-item"><a href="/#" className="footer-link">Информация</a></li>
-                    <li className="footer-item"><a href="/#" className="footer-link">Контакты</a></li>
+                    <li className="footer-item"><a href="/contacts" className="footer-link">Контакты</a></li>
                 </ul>
             </div>
             <div className="footer-networks">
