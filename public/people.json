@@ -1,0 +1,35 @@
+[
+    {
+        "userID": 1,
+        "name": "Иван",
+        "surname": "Петров",
+        "employee": "Управляющий партнёр",
+        "phone": "+7 (123) 123-45-67",
+        "networks": {
+            "email": "ivanpetrov@example.ru",
+            "telegram": "@ivanpetrov"
+        }
+    },
+    {
+        "userID": 2,
+        "name": "Анна",
+        "surname": "Смирнова",
+        "employee": "Маркетолог",
+        "phone": "+7 (987) 654-32-10",
+        "networks": {
+            "email": "annasmirnova@example.ru",
+            "telegram": "@annasmirnova"
+        }
+    },
+    {
+        "userID": 3,
+        "name": "Дмитрий",
+        "surname": "Кузнецов",
+        "employee": "Разработчик",
+        "phone": "+7 (555) 789-12-34",
+        "networks": {
+            "email": "dmitriyk@example.ru",
+            "telegram": "@dmitriykuznetsov"
+        }
+    }
+]

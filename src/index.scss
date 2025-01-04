@@ -36,7 +36,7 @@ html {
     font-size: 16px;
 }
 
-body {
+body, main {
     font-family: 'Ubuntu';
     background-color: f.$black;
     font-weight: 400;
@@ -285,19 +285,87 @@ body {
     }
     &-section {
         display: flex;
-        column-gap: 10px;
+        column-gap: 25px;
 
+        & a {
+            position: relative;
+            &::before{
+                content: '';
+                position: absolute;
+                display: none;
+                width: 70%; height: 74.9%;
+                top: 19%; left: 14%;
+                border-radius: 0 0 6px 7px;
+                background-color: f.$white;
+            }
+            &:hover {
+
+                & :where(.footer-vk, .footer-telegram, .footer-github):hover {
+                    filter: grayscale(0);
+                }
+
+                & .footer-vk:hover {fill: f.$vk;}
+                & .footer-telegram:hover {fill: f.$telegram;}
+                & .footer-github:hover {fill: f.$github;}
+
+                &::before{
+                    display: block;
+                    transform: translateX(0);
+                }
+            }
+        }
         & :where(.footer-vk, .footer-telegram, .footer-github) {
             filter: grayscale(1);
             cursor: pointer;
         }
-        
-        & :where(.footer-vk, .footer-telegram, .footer-github):hover {
-            filter: grayscale(0);
+    }
+}
+
+.contact {
+    & h1 {
+        color: f.$sky;
+        font-weight: 700;
+        text-align: center;
+        margin-top: 2rem;
+    }
+    &-person {
+        display: flex;
+        flex-direction: column;
+        color: f.$contact-text;
+        margin-bottom: 2rem;
+        &-initials {
+            color: f.$contact-src;
+            font-weight: 700;
+        }
+        &-employee {
+            margin: {
+                inline-start: .5rem;
+                bottom: 1.2rem;
+            };
+        }
+        &-email, &-phone, &-network {
+            display: block;
         }
 
-        & .footer-vk:hover {fill: f.$vk;}
-        & .footer-telegram:hover {fill: f.$telegram;}
-        & .footer-github:hover {fill: f.$github;}
+        &-phone {
+            & span {color: f.$sky;}
+        }
+
+        &-email {
+            & u {
+                color: f.$sky;
+                text-decoration: underline;
+            }
+        }
+
+        &-network {
+            & a{color: f.$contact-src;}
+        }
+    }
+    &-location {
+        & h4 {
+            @extend .contact-person-initials;
+            color: f.$sky;
+        }
     }
 }

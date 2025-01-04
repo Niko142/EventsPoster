@@ -23,7 +23,7 @@ const Header = () => {
               <a className="nav-link" href="#">События</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Информация</a>
+              <a className="nav-link" href="/info">Информация</a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/contacts">Контакты</a>
