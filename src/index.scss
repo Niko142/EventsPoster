@@ -320,7 +320,7 @@ body, main {
         }
     }
 }
-
+// Блок контактной информации
 .contact {
     & h1 {
         color: f.$sky;
@@ -328,6 +328,8 @@ body, main {
         text-align: center;
         margin-top: 2rem;
     }
+    
+    //person block
     &-person {
         display: flex;
         flex-direction: column;
@@ -362,10 +364,80 @@ body, main {
             & a{color: f.$contact-src;}
         }
     }
+    
+    //location block
     &-location {
-        & h4 {
+        & label {
             @extend .contact-person-initials;
+            font-size: 1.2rem;
             color: f.$sky;
+        }
+        &-adress {
+            color: f.$contact-text;
+        }
+        &-timejob {
+            color: f.$contact-text;
+        }
+        &-phone {
+            text-decoration: underline;
+            color: f.$contact-src;
+            margin-bottom: 1.5rem;
+        }
+
+        // &-map {
+
+        // }
+    }
+
+    //feedback block
+    &-feedback {
+        background-color: f.$grey;
+        border-radius: .7rem;
+        &-symbol {
+            font-weight: 300;
+            color: f.$contact-text;
+            font-style: italic;
+            text-align: center;
+            
+        }
+
+        #symbols {
+            font: {
+                style: normal;
+                size: 1.2rem;
+                weight: 700;
+            }
+            color: f.$red;
+            margin-left: .2rem;
+        }
+        
+        & label {
+            color: f.$contact-src;
+            font-weight: 700;
+        }
+        & h4 {
+            color: f.$sky;
+            text-align: center;
+            font-weight: 700;
+        }
+        &-input, &-area {
+            color: f.$black;
+            background-color: f.$contact-text;
+        }
+
+        &-btn {
+            background-color: f.$contact-src;
+            border: 1px solid f.$black;
+            &:is(:hover, :focus-visible) {
+                opacity: .8;
+                background-color: f.$contact-src;
+            }
+        }
+
+        &-error {
+            display: block;
+            color: f.$red;
+            font-weight: 700;
         }
     }
 }
