@@ -3,7 +3,7 @@
 
 //fonts
 @font-face {
-    src: url("./fonts/Ubuntu-Regular.woff2") format("woff2");
+    src: url("./assets/fonts/Ubuntu-Regular.woff2") format("woff2");
     font: {
         family: 'Ubuntu';
         weight: 400;
@@ -13,7 +13,7 @@
 }
 
 @font-face {
-    src: url("./fonts/Ubuntu-Bold.woff2") format("woff2");
+    src: url("./assets/fonts/Ubuntu-Bold.woff2") format("woff2");
     font: {
         family: 'Ubuntu';
         weight: 700;
@@ -23,7 +23,7 @@
 }
 
 @font-face {
-    src: url("./fonts/Ubuntu-Light.woff2") format("woff2");
+    src: url("./assets/fonts/Ubuntu-Light.woff2") format("woff2");
     font: {
         family: 'Ubuntu';
         weight: 300;
@@ -425,6 +425,8 @@ body, main {
             background-color: f.$contact-text;
         }
 
+        &-area {resize: none;}
+
         &-btn {
             background-color: f.$contact-src;
             border: 1px solid f.$black;
@@ -436,7 +438,7 @@ body, main {
 
         &-error {
             display: block;
-            color: f.$red;
+            color: f.$error;
             font-weight: 700;
         }
     }

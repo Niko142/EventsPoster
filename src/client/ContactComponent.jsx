@@ -29,7 +29,6 @@ const ContactCard = () => {
             }
         }
     }
- 
     const PersonBlock = ({ name, surname, employee, phone, email, tg }) => {
         return (
             <div className="contact-person">

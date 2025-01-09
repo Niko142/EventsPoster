@@ -1,5 +1,6 @@
-import logo from '../images/Logo.svg';
-import '../../node_modules/bootstrap/js/src/collapse'
+import logo from '../assets/images/logo.svg'
+import 'bootstrap/js/src/collapse';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
@@ -17,16 +18,16 @@ const Header = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/">Главная</a>
+              <Link className='nav-link' to={'/'}>Главная</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">События</a>
+              <Link className='nav-link' to={'#'}>События</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/info">Информация</a>
+              <Link className='nav-link' to={'/info'}>Информация</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/contacts">Контакты</a>
+              <Link className='nav-link' to={'/contacts'}>Контакты</Link>
             </li>
           </ul>
         </div>

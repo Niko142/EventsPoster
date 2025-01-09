@@ -1,5 +1,6 @@
 import { FaTelegram } from "react-icons/fa";
 import { FaVk, FaGithub  } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
@@ -13,10 +14,18 @@ const Footer = () => {
             <div className="footer-navigation">
                 <h4 className='footer-header'>Навигация</h4>
                 <ul>
-                    <li className="footer-item"><a href="/" className="footer-link">Главная</a></li>
-                    <li className="footer-item"><a href="/#" className="footer-link">События</a></li>
-                    <li className="footer-item"><a href="/info" className="footer-link">Информация</a></li>
-                    <li className="footer-item"><a href="/contacts" className="footer-link">Контакты</a></li>
+                    <li className="footer-item">
+                        <Link className="footer-link" to={'/'}>Главная</Link>
+                    </li>
+                    <li className="footer-item">
+                        <Link className="footer-link" to={'#'}>События</Link>
+                    </li>
+                    <li className="footer-item">
+                        <Link className="footer-link" to={'/info'}>Информация</Link>
+                    </li>
+                    <li className="footer-item">
+                        <Link className="footer-link" to={'/contacts'}>Контакты</Link>
+                    </li>
                 </ul>
             </div>
             <div className="footer-networks">
