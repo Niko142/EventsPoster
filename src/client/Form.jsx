@@ -1,22 +1,19 @@
 import {useForm} from 'react-hook-form';
-import { data } from 'react-router-dom';
+import { FetchForm } from './request/fetchRequests';
 
 const FeedbackForm = () => {
-    const { register, handleSubmit, formState: {errors}, reset } = useForm({mode: 'onChange'});
+    const { register, handleSubmit, formState: {errors} } = useForm({mode: 'onChange'});
 
-    const onSubmit = ( data ) => {
-        const res = JSON.stringify(data);
-        console.log(res);
-        
-        // function FetchData(req) {
-        //     fetch('', {
-        //         method: 'POST',
-        //         body: '',
-        //         headers: {'Content-type': 'application/json; charset=UTF-8'}
-        //     })
-        //     .then(res => JSON.stringify(res))
-        //     .catch(err => err) 
-        // }
+    const onSubmit = async ( data ) => {
+        // const res = JSON.stringify(data);
+        // console.log(res);
+        try {
+            const response = FetchForm(data);
+            console.log('Ответ от сервера', response);
+        }
+        catch(err) {
+            console.log(err);
+        }
     }
     
     return (
