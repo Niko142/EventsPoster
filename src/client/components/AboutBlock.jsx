@@ -1,14 +1,31 @@
+import { useState } from "react";
+import { IoMdArrowDown, IoMdArrowUp } from "react-icons/io";
+import { IoClose } from "react-icons/io5";
+
 const AboutBlock = () => {
-    
-    const AboutCard = () => {
+
+    const AboutCard = ({ title }) => {
         return (
-            <></>
+            <div className="about-card">
+                <h3 className="about-card-header">{title}</h3>
+
+                <button className="about-card-btn btn btn-info unshow"><IoMdArrowDown color='white' size={25}/></button>
+            </div>
         )
+    }
+
+    function showInfo(event) {
+
     }
 
     return (
         <>
-
+        <div className="about mx-4">
+            <AboutCard title={'О нас:'}/>
+            <AboutCard title={'Как пользоваться сайтом:'}/>
+            <AboutCard title={''}/>
+            <AboutCard title={'Часто задаваемые вопросы (FAQ):'}/>
+        </div>
          {/* 
             О нас
             Краткая информация о том, кто вы, миссия сайта, цели и для кого предназначен ресурс.

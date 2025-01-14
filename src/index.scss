@@ -443,3 +443,45 @@ body, main {
         }
     }
 }
+
+// about
+
+.about{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    // пока тест
+    margin-top: 2rem;
+    gap: 3rem;
+
+    &-card{
+        border: 1px solid f.$white;
+        display: flex;
+        flex-flow: column;
+        padding: 30px 50px;
+        border-radius: 15px;
+        background-color: f.$grey;
+        
+        &-header{
+            display: block;
+            font-weight: 700;
+            color: f.$sky;
+        }
+
+        &-btn {
+            padding: 1rem;
+            border-radius: 100%;
+            padding: .5rem;
+            border: 1px solid transparent;
+            background-color: f.$black;
+            
+            &:hover {
+                border: 1px solid f.$contact-src;
+                background-color: opacity($color: #000000);
+            }
+        }
+
+        & :where(.about-card-header, .about-card-btn) {
+            align-self: center;
+        }
+    }
+}

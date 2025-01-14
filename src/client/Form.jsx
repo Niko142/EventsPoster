@@ -1,19 +1,19 @@
 import {useForm} from 'react-hook-form';
-import { FetchForm } from './request/fetchRequests';
+//import { FetchForm } from './request/fetchRequests';
 
 const FeedbackForm = () => {
     const { register, handleSubmit, formState: {errors} } = useForm({mode: 'onChange'});
 
     const onSubmit = async ( data ) => {
-        // const res = JSON.stringify(data);
-        // console.log(res);
-        try {
-            const response = FetchForm(data);
-            console.log('Ответ от сервера', response);
-        }
-        catch(err) {
+        fetch('/api/messages', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: { 'Content-type': 'application/json; charset=UTF-8' }
+        }).then(data => data.json()).then(res => console.log(res))
+        .catch(err => {
             console.log(err);
-        }
+            throw err;
+        })
     }
     
     return (
