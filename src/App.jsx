@@ -1,23 +1,22 @@
-import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import './index.scss'
-import HomePage from './client/Home'
-import Contacts from './client/Contacts'
-import InfoBlock from './client/Information'
+import "@/index.scss";
+import HomePage from "@/pages/Home";
+import Contacts from "@/pages/Contacts";
+import InfoBlock from "@/pages/Information";
 
 function App() {
-
   return (
     <BrowserRouter>
       <main>
         <Routes>
-            <Route path='/' element={<HomePage />}/>
-            <Route path='/contacts' element={<Contacts/>}/>
-            <Route path='/info' element={<InfoBlock/>}/>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/contacts" element={<Contacts />} />
+          <Route path="/info" element={<InfoBlock />} />
         </Routes>
       </main>
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;
