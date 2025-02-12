@@ -1,487 +1,515 @@
-@use 'style/forward' as f;
+@use "style/forward" as f;
 @use "../node_modules/bootstrap/scss/bootstrap";
 
 //fonts
 @font-face {
-    src: url("./assets/fonts/Ubuntu-Regular.woff2") format("woff2");
-    font: {
-        family: 'Ubuntu';
-        weight: 400;
-        style: normal;
-        display: swap;
-    };
+  src: url("./assets/fonts/Ubuntu-Regular.woff2") format("woff2");
+  font: {
+    family: "Ubuntu";
+    weight: 400;
+    style: normal;
+    display: swap;
+  }
 }
 
 @font-face {
-    src: url("./assets/fonts/Ubuntu-Bold.woff2") format("woff2");
-    font: {
-        family: 'Ubuntu';
-        weight: 700;
-        style: normal;
-        display: swap;
-    };
+  src: url("./assets/fonts/Ubuntu-Bold.woff2") format("woff2");
+  font: {
+    family: "Ubuntu";
+    weight: 700;
+    style: normal;
+    display: swap;
+  }
 }
 
 @font-face {
-    src: url("./assets/fonts/Ubuntu-Light.woff2") format("woff2");
-    font: {
-        family: 'Ubuntu';
-        weight: 300;
-        style: normal;
-        display: swap;
-    };
+  src: url("./assets/fonts/Ubuntu-Light.woff2") format("woff2");
+  font: {
+    family: "Ubuntu";
+    weight: 300;
+    style: normal;
+    display: swap;
+  }
 }
 
 html {
-    font-size: 16px;
+  font-size: 16px;
 }
 
-body, main {
-    font-family: 'Ubuntu';
-    background-color: f.$black;
-    font-weight: 400;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+body,
+main {
+  font-family: "Ubuntu";
+  background-color: f.$black;
+  font-weight: 400;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 //HEADER
 .navbar {
-    background-color: f.$grey;
-    position: sticky;
-    top: 0;
-    box-shadow: 0 0 0.1rem white;
-    z-index: 1000;
-    &-nav {
-        gap: 20px;  
-    }
+  background-color: f.$grey;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 0 0.1rem white;
+  z-index: 1000;
+  &-nav {
+    gap: 20px;
+  }
 
-    &-toggler {
-        background-color: f.$white;
-        border: 0;
-        &:focus {
-            box-shadow: 0 0 0 0.25rem f.$sky;
-        }
+  &-toggler {
+    background-color: f.$white;
+    border: 0;
+    &:focus {
+      box-shadow: 0 0 0 0.25rem f.$sky;
     }
+  }
 
-    &-title {
+  &-title {
+    color: f.$red;
+    flex: 1;
+    text-align: center;
+
+    & h1 {
+      font-weight: 700;
+      display: block;
+      margin-bottom: 0;
+    }
+  }
+
+  &-collapse {
+    flex-grow: 0;
+    @include f.headerIndent();
+  }
+
+  & .nav-item {
+    font-size: 1rem;
+    & .nav-link {
+      color: f.$sky;
+      &:where(:hover, :active, :focus-visible) {
+        outline: 0;
         color: f.$red;
-        flex: 1;
-        text-align: center;
-
-        & h1 {
-            font-weight: 700;
-            display: block;
-            margin-bottom: 0;
-        }
+        box-shadow: 0 0 0 0.25rem f.$red;
+      }
     }
-
-    &-collapse {
-        flex-grow: 0;
-        @include f.headerIndent()
-    }
-
-    & .nav-item {
-        font-size: 1rem;
-        & .nav-link{
-            color: f.$sky;
-            &:where(:hover, :active, :focus-visible) {
-                outline: 0;
-                color: f.$red;
-                box-shadow: 0 0 0 0.25rem f.$red;
-            }
-        }
-    }
+  }
 }
 
 // WIDGET
 .card {
-    margin: {
-        inline: auto;
-        top: 2rem;
-        bottom: 2.6rem;
-    };
-    max-width: 1920px;
-    display: flex;
-    max-height: 65vh;
-    flex-direction: row;
-    color: f.$red;
-    background-color: f.$grey;
-    animation: widgetAppearance 1s ease-in-out forwards;
-    @include f.widget(1920px) {
-        margin-inline: 100px;
-    }
-    @include f.widget(1250px) {
-        flex-direction: column;
-        & .btn {
-            align-self: flex-start;
-            &-continue {
-                padding-inline: 5rem;
-            }
-        }
-    }
-    @include f.widget(640px) {margin-inline: 45px;}
-    @include f.widget(463px){
-        margin-inline: 20px;
-    }
-    
-    @keyframes opacitySlider {
-        from {
-            opacity: 1;
-        }
-        to{
-            opacity: 0;
-        }
-    }
-
-    &-carousel {
-        display: flex;
-        justify-content: center;
-        flex: 7;
-        overflow: hidden;
-        &-image {
-            flex: 0 0 100%;
-            &.visible {
-                transition: opacity .3s ease-in-out;
-                opacity: 1;
-            }
-            &.unvisible{
-                animation: opacitySlider .8s ease-in-out forwards;
-            }
-        }
-        &-wrapper {
-            display: flex;
-            transition: transform 1s ease-in-out;
-        }
-    }
-
-    &-body {
-        display: flex;
-        flex: 3;
-        flex-direction: column;
-        padding-inline: 2rem;
-        @include f.widget(463px){
-            padding-inline: 1rem;
-        }
-    }
-
-    &-title {
-        font-weight: 700;
-    }
-    &-text {
-        font: {
-            size: 1.1rem
-        };
-        color: f.$sky;
-        @include f.widget(530px) {font-size: 0.9rem;}
-    }
-
-    &-btn-bar {
-        display: flex;
-        justify-content: space-between;
-        margin-inline: 1.5rem;
-        vertical-align: bottom;
-        align-items: end;
-        margin-top: auto;
-        @include f.widget(1250px) {
-            justify-content: end;
-            column-gap: 5rem;
-            margin-inline: 0;
-        }
-        @include f.widget(590px) {justify-content: space-around;}
-    }
-
+  margin: {
+    inline: auto;
+    top: 2rem;
+    bottom: 2.6rem;
+  }
+  max-width: 1920px;
+  display: flex;
+  max-height: 65vh;
+  flex-direction: row;
+  color: f.$red;
+  background-color: f.$grey;
+  animation: widgetAppearance 1s ease-in-out forwards;
+  @include f.widget(1920px) {
+    margin-inline: 100px;
+  }
+  @include f.widget(1250px) {
+    flex-direction: column;
     & .btn {
-        color: f.$sky;
-        background-color: f.$red;
-        margin-bottom: 10px;
-        
-        &:where(:hover, :focus-visible, :active) {
-            opacity: .8;
-            color: f.$black;
-        }
-        @include f.widget(590px) {
-            &.btn-continue {
-                padding-inline: 1rem;
-                align-self: auto;
-                margin-bottom: 20px;
-            }
-        }
+      align-self: flex-start;
+      &-continue {
+        padding-inline: 5rem;
+      }
     }
-    & .btn:where(.next, .prev) {
-        display: flex;
-        background-color: f.$sky;
-        color: f.$grey;
-        & svg {pointer-events: none;}
+  }
+  @include f.widget(640px) {
+    margin-inline: 45px;
+  }
+  @include f.widget(463px) {
+    margin-inline: 20px;
+  }
+
+  @keyframes opacitySlider {
+    from {
+      opacity: 1;
     }
-    
-    @keyframes widgetAppearance {
-        from {
-            opacity: 0;
-            transform: translateX(-20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
+    to {
+      opacity: 0;
     }
+  }
+
+  &-carousel {
+    display: flex;
+    justify-content: center;
+    flex: 7;
+    overflow: hidden;
+    &-image {
+      flex: 0 0 100%;
+      object-position: center;
+      &.visible {
+        transition: opacity 0.3s ease-in-out;
+        opacity: 1;
+      }
+      &.unvisible {
+        animation: opacitySlider 0.8s ease-in-out forwards;
+      }
+    }
+    &-wrapper {
+      display: flex;
+      transition: transform 1s ease-in-out;
+    }
+  }
+
+  &-body {
+    display: flex;
+    flex: 3;
+    flex-direction: column;
+    padding-inline: 2rem;
+    @include f.widget(463px) {
+      padding-inline: 1rem;
+    }
+  }
+
+  &-title {
+    font-weight: 700;
+  }
+  &-text {
+    font: {
+      size: 1.1rem;
+    }
+    color: f.$sky;
+    @include f.widget(530px) {
+      font-size: 0.9rem;
+    }
+  }
+
+  &-btn-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-inline: 1.5rem;
+    vertical-align: bottom;
+    align-items: end;
+    margin-top: auto;
+    @include f.widget(1250px) {
+      justify-content: end;
+      column-gap: 5rem;
+      margin-inline: 0;
+    }
+    @include f.widget(590px) {
+      justify-content: space-around;
+    }
+  }
+
+  & .btn {
+    color: f.$sky;
+    background-color: f.$red;
+    margin-bottom: 10px;
+
+    &:where(:hover, :focus-visible, :active) {
+      opacity: 0.8;
+      color: f.$black;
+    }
+    @include f.widget(590px) {
+      &.btn-continue {
+        padding-inline: 1rem;
+        align-self: auto;
+        margin-bottom: 20px;
+      }
+    }
+  }
+  & .btn:where(.btn-next, .btn-prev) {
+    display: flex;
+    background-color: f.$sky;
+    color: f.$grey;
+    & svg {
+      pointer-events: none;
+    }
+  }
+
+  @keyframes widgetAppearance {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
 }
 
 // FOOTER
 .footer {
-    margin-top: auto; //фиксированный отступ, чтобы прижать к низу
-    color: f.$sky;
+  margin-top: auto; //фиксированный отступ, чтобы прижать к низу
+  color: f.$sky;
+  display: flex;
+  justify-content: space-between;
+  row-gap: 20px;
+  flex-wrap: wrap;
+  width: 100%;
+  background-color: f.$grey;
+  padding: {
+    inline: 120px;
+    top: 20px;
+    bottom: 20px;
+  }
+  @include f.footerOffset(670px, 60px);
+  @include f.footerOffset(395px, 45px);
+  @include f.footerOffset(331px, 35px);
+  &-header {
+    font-weight: 700;
+  }
+
+  & ul {
     display: flex;
-    justify-content: space-between;
-    row-gap: 20px;
-    flex-wrap: wrap;
-    width: 100%;
-    background-color: f.$grey;
-    padding: {
-        inline: 120px;
-        top: 20px;
-        bottom: 20px;
-    };
-    @include f.footerOffset(670px, 60px);
-    @include f.footerOffset(395px,45px);
-    @include f.footerOffset(331px, 35px);
-    &-header{
-        font-weight: 700;
-    }
+    flex-direction: column;
+    row-gap: 5px;
+    padding-left: 0;
+    margin-bottom: 0;
+  }
 
-    & ul {
-        display: flex;
-        flex-direction: column;
-        row-gap: 5px;
-        padding-left: 0;
-        margin-bottom: 0;
+  &-link {
+    text-decoration: none;
+    color: f.$sky;
+    &:hover {
+      color: f.$red;
     }
+  }
 
-    &-link {
-        text-decoration: none;
-        color: f.$sky;
-        &:hover {
-            color: f.$red;
+  &
+    :where(
+      .footer-logo,
+      .footer-navigation,
+      .footer-contacts,
+      .footer-networks
+    ) {
+    display: flex;
+    flex-direction: column;
+    padding-inline: 1rem;
+  }
+
+  & :where(span, a) {
+    opacity: 0.8;
+  }
+
+  &-contacts {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+  }
+  &-section {
+    display: flex;
+    column-gap: 25px;
+
+    & a {
+      position: relative;
+      &::before {
+        content: "";
+        position: absolute;
+        display: none;
+        width: 70%;
+        height: 74.9%;
+        top: 19%;
+        left: 14%;
+        border-radius: 0 0 6px 7px;
+        background-color: f.$white;
+      }
+      &:hover {
+        & :where(.footer-vk, .footer-telegram, .footer-github):hover {
+          filter: grayscale(0);
         }
-    }
 
-    & :where(
-        .footer-logo, 
-        .footer-navigation, 
-        .footer-contacts, 
-        .footer-networks
-        ) {
-        display: flex;
-        flex-direction: column;
-        padding-inline: 1rem;
-    }
-
-    & :where(span, a) {opacity: .8;}
-
-    &-contacts{
-        display: flex;
-        flex-direction: column;
-        row-gap: 5px;
-    }
-    &-section {
-        display: flex;
-        column-gap: 25px;
-
-        & a {
-            position: relative;
-            &::before{
-                content: '';
-                position: absolute;
-                display: none;
-                width: 70%; height: 74.9%;
-                top: 19%; left: 14%;
-                border-radius: 0 0 6px 7px;
-                background-color: f.$white;
-            }
-            &:hover {
-
-                & :where(.footer-vk, .footer-telegram, .footer-github):hover {
-                    filter: grayscale(0);
-                }
-
-                & .footer-vk:hover {fill: f.$vk;}
-                & .footer-telegram:hover {fill: f.$telegram;}
-                & .footer-github:hover {fill: f.$github;}
-
-                &::before{
-                    display: block;
-                    transform: translateX(0);
-                }
-            }
+        & .footer-vk:hover {
+          fill: f.$vk;
         }
-        & :where(.footer-vk, .footer-telegram, .footer-github) {
-            filter: grayscale(1);
-            cursor: pointer;
+        & .footer-telegram:hover {
+          fill: f.$telegram;
         }
+        & .footer-github:hover {
+          fill: f.$github;
+        }
+
+        &::before {
+          display: block;
+          transform: translateX(0);
+        }
+      }
     }
+    & :where(.footer-vk, .footer-telegram, .footer-github) {
+      filter: grayscale(1);
+      cursor: pointer;
+    }
+  }
 }
 // Блок контактной информации
 .contact {
-    & h1 {
+  & h1 {
+    color: f.$sky;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  //person block
+  &-person {
+    display: flex;
+    flex-direction: column;
+    color: f.$contact-text;
+    margin-bottom: 2rem;
+    &-initials {
+      color: f.$contact-src;
+      font-weight: 700;
+    }
+    &-employee {
+      margin: {
+        inline-start: 0.5rem;
+        bottom: 1.2rem;
+      }
+    }
+    &-email,
+    &-phone,
+    &-network {
+      display: block;
+    }
+
+    &-phone {
+      & span {
         color: f.$sky;
-        font-weight: 700;
-        text-align: center;
-        margin-top: 2rem;
-    }
-    
-    //person block
-    &-person {
-        display: flex;
-        flex-direction: column;
-        color: f.$contact-text;
-        margin-bottom: 2rem;
-        &-initials {
-            color: f.$contact-src;
-            font-weight: 700;
-        }
-        &-employee {
-            margin: {
-                inline-start: .5rem;
-                bottom: 1.2rem;
-            };
-        }
-        &-email, &-phone, &-network {
-            display: block;
-        }
-
-        &-phone {
-            & span {color: f.$sky;}
-        }
-
-        &-email {
-            & u {
-                color: f.$sky;
-                text-decoration: underline;
-            }
-        }
-
-        &-network {
-            & a{color: f.$contact-src;}
-        }
-    }
-    
-    //location block
-    &-location {
-        & label {
-            @extend .contact-person-initials;
-            font-size: 1.2rem;
-            color: f.$sky;
-        }
-        &-adress {
-            color: f.$contact-text;
-        }
-        &-timejob {
-            color: f.$contact-text;
-        }
-        &-phone {
-            text-decoration: underline;
-            color: f.$contact-src;
-            margin-bottom: 1.5rem;
-        }
-
-        // &-map {
-
-        // }
+      }
     }
 
-    //feedback block
-    &-feedback {
-        background-color: f.$grey;
-        border-radius: .7rem;
-        &-symbol {
-            font-weight: 300;
-            color: f.$contact-text;
-            font-style: italic;
-            text-align: center;
-            
-        }
-
-        #symbols {
-            font: {
-                style: normal;
-                size: 1.2rem;
-                weight: 700;
-            }
-            color: f.$red;
-            margin-left: .2rem;
-        }
-        
-        & label {
-            color: f.$contact-src;
-            font-weight: 700;
-        }
-        & h4 {
-            color: f.$sky;
-            text-align: center;
-            font-weight: 700;
-        }
-        &-input, &-area {
-            color: f.$black;
-            background-color: f.$contact-text;
-        }
-
-        &-area {resize: none;}
-
-        &-btn {
-            background-color: f.$contact-src;
-            border: 1px solid f.$black;
-            &:is(:hover, :focus-visible) {
-                opacity: .8;
-                background-color: f.$contact-src;
-            }
-        }
-
-        &-error {
-            display: block;
-            color: f.$error;
-            font-weight: 700;
-        }
+    &-email {
+      & u {
+        color: f.$sky;
+        text-decoration: underline;
+      }
     }
+
+    &-network {
+      & a {
+        color: f.$contact-src;
+      }
+    }
+  }
+
+  //location block
+  &-location {
+    & label {
+      @extend .contact-person-initials;
+      font-size: 1.2rem;
+      color: f.$sky;
+    }
+    &-adress {
+      color: f.$contact-text;
+    }
+    &-timejob {
+      color: f.$contact-text;
+    }
+    &-phone {
+      text-decoration: underline;
+      color: f.$contact-src;
+      margin-bottom: 1.5rem;
+    }
+
+    // &-map {
+
+    // }
+  }
+
+  //feedback block
+  &-feedback {
+    background-color: f.$grey;
+    border-radius: 0.7rem;
+    &-symbol {
+      font-weight: 300;
+      color: f.$contact-text;
+      font-style: italic;
+      text-align: center;
+    }
+
+    #symbols {
+      font: {
+        style: normal;
+        size: 1.2rem;
+        weight: 700;
+      }
+      color: f.$red;
+      margin-left: 0.2rem;
+    }
+
+    & label {
+      color: f.$contact-src;
+      font-weight: 700;
+    }
+    & h4 {
+      color: f.$sky;
+      text-align: center;
+      font-weight: 700;
+    }
+    &-input,
+    &-area {
+      color: f.$black;
+      background-color: f.$contact-text;
+    }
+
+    &-area {
+      resize: none;
+    }
+
+    &-btn {
+      background-color: f.$contact-src;
+      border: 1px solid f.$black;
+      &:is(:hover, :focus-visible) {
+        opacity: 0.8;
+        background-color: f.$contact-src;
+      }
+    }
+
+    &-error {
+      display: block;
+      color: f.$error;
+      font-weight: 700;
+    }
+  }
 }
 
 // about
 
-.about{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    // пока тест
-    margin-top: 2rem;
-    gap: 3rem;
+.about {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  // пока тест
+  margin-top: 2rem;
+  gap: 3rem;
 
-    &-card{
-        border: 1px solid f.$white;
-        display: flex;
-        flex-flow: column;
-        padding: 30px 50px;
-        border-radius: 15px;
-        background-color: f.$grey;
-        
-        &-header{
-            display: block;
-            font-weight: 700;
-            color: f.$sky;
-        }
+  &-card {
+    border: 1px solid f.$white;
+    display: flex;
+    flex-flow: column;
+    padding: 30px 50px;
+    border-radius: 15px;
+    background-color: f.$grey;
 
-        &-btn {
-            padding: 1rem;
-            border-radius: 100%;
-            padding: .5rem;
-            border: 1px solid transparent;
-            background-color: f.$black;
-            
-            &:hover {
-                border: 1px solid f.$contact-src;
-                background-color: opacity($color: #000000);
-            }
-        }
-
-        & :where(.about-card-header, .about-card-btn) {
-            align-self: center;
-        }
+    &-header {
+      display: block;
+      font-weight: 700;
+      color: f.$sky;
     }
+
+    &-btn {
+      padding: 1rem;
+      border-radius: 100%;
+      padding: 0.5rem;
+      border: 1px solid transparent;
+      background-color: f.$black;
+
+      &:hover {
+        border: 1px solid f.$contact-src;
+        background-color: opacity($color: #000000);
+      }
+    }
+
+    & :where(.about-card-header, .about-card-btn) {
+      align-self: center;
+    }
+  }
 }
